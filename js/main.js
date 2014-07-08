@@ -1,8 +1,22 @@
 
 
-//below randomizes backgrounds. 
-//if you add a new background, add the filename to the array "allBackgrounds".
+$(function(){
+    setTimeout(function(){
+        modal.open({modalContent: "Dear Climate is a collection of agitprop posters <br> and meditative audio experiences that help you<br> meet, befriend, and become climate change. <br> Please distribute freely."});
+    })
+    switchBackground();
+    $(".headerNav").click(menuclicked);
+    $("#dearClimate").click(homeclicked);
+    if (window.location.hash !== ""){
+        goToPage(window.location.hash.substr(2))   
+    } else {
+        goToPage("homepage");
+    }
+});
 
+
+//below randomizes backgrounds. 
+//to add a new background, add the filename to the array "allBackgrounds"
 var allBackgrounds = ["bg_rain1.jpg", "bg_rain2.jpg"];
 
 function switchBackground(){
@@ -14,79 +28,41 @@ function switchBackground(){
 	console.log(backgroundName);
 }
 
-$(switchBackground);
+// below is the slideshow stuff
 
+function slideshow(){
+    $('.fadein img:gt(0)').hide();
+    setInterval(function(){
+      $('.fadein :first-child').fadeOut()
+         .next('img').fadeIn()
+         .end().appendTo('.fadein');}, 
+      5000);
+}
 
-//below is the modal stuff
+//below is the navigation script
+function menuclicked(){
+    var menuItem = $(this).attr("id");
+    goToPage(menuItem);
+}
 
-var modal = (function(){
-    var 
-    method = {},
-    $modalOverlay,
-    $modal,
-    $modalContent,
-    $modalClose;
+function homeclicked(){
+    goToPage("homepage");
+}
 
-    // Append the HTML
-    $modalOverlay = $('<div id="modalOverlay"></div>');
-	$modal = $('<div id="modal"></div>');
-	$modalContent = $('<div id="modalContent"></div>');
-	$modalClose = $('<a id="modalClose" href="#">ENTER</a>');
-
-	$modal.hide();
-	$modalOverlay.hide();
-	$modal.append($modalContent, $modalClose);
-
-$(document).ready(function(){
-    $('body').append($modalOverlay, $modal);
-});
-
-    // Center the modal in the viewport
-    method.center = function () {
-    var top, left;
-
-    top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
-    left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
-
-    $modal.css({
-        top:top + $(window).scrollTop(), 
-        left:left + $(window).scrollLeft()
+function goToPage(menuItem){  
+    $.get(menuItem+".html", function(content){
+        $("#contentContainer").html(content)
     });
-};
-
-    // Open the modal
-    method.open = function (settings) {
-    $modalContent.empty().append(settings.modalContent);
-
-    $modal.css({
-        width: settings.width || 'auto', 
-        height: settings.height || 'auto'
-    })
-
-    method.center();
-
-    $(window).bind('resize.modal', method.center);
-
-    $modal.show();
-    $modalOverlay.show();
-};
-
-    // Close the modal
-    method.modalClose = function () {
-    $modal.hide();
-    $modalOverlay.hide();
-    $modalContent.empty();
-    $(window).unbind('resize.modal');
-
-    $modalClose.click(function(e){
-    e.preventDefault();
-    method.modalClose();
-});
-};
+    $(".isSelected").removeClass("isSelected");
+    window.location.hash = "/"+menuItem;
+    $(".headerNav#"+menuItem).addClass("isSelected");
+}
 
 
-
-    return method;
-}());
-
+// $('#mute').on("click", function (e)){
+//     var audio = $('#homeAudio')[0];
+//     audio.muted = !audio.muted;
+//     e.preventDefault();
+//     console.log("muted");
+// });
 

@@ -3,11 +3,8 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+    <sarah rothberg> -- <developer>
+    <marina zurkow> -- <designer>
 
 # TECHNOLOGY COLOPHON
 
