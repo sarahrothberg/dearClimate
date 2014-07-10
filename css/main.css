@@ -161,6 +161,16 @@ body{
     cursor: pointer;
 }
 
+#soundcloudHome{
+    position: absolute;
+    top: 400px;
+    left: 920px;
+    width: 62px;
+    height: 87px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
 #contentSidebar{
     position: absolute;
     top: 350px;
@@ -209,8 +219,8 @@ body{
     height:510px;
 }
 
-.fadein {}
-.fadein img { 
+#slideshowPoster img { 
+    opacity: 0;
     position:absolute; 
     right:100px;
     top:20px;
@@ -256,7 +266,84 @@ body{
     font-size: 8px;
     font-family:'Share Tech Mono';
 }
+/* ----------------- POSTERS PAGE CAROUSEL -----------------*/
 
+#posterPageContainer {
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1000px;
+    height: 510px;
+    overflow: hidden;
+
+}
+
+
+#posterjpgcontainer {
+    position: absolute;
+    left: 500px;
+    top: 0px;
+    width: 500px;
+    height: 500px;
+    float: right;
+
+}
+
+#posterjpg {
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    width: 280px;
+    left: 120px;
+    top: 20px;
+    position: absolute;
+}
+
+#thumbContainer {
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 500px;
+    height: 500px;
+    margin: 20px;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.thumbs {
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-bottom:2px;
+    float:left;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+}
+.thumbs:hover {
+    border: 1px solid orange;
+}
+
+#downloadPDF{
+    border: 3px solid white;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 470px;
+    left: 710px;
+    padding:2px;
+    font-family: 'Share Tech Mono';
+    color: black;
+}
+
+#downloadPDF:hover{
+    border: 3px solid orange;
+}
 
 /* ==========================================================================
    Media Queries
