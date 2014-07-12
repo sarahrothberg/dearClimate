@@ -123,12 +123,12 @@ body{
 }
 
 .headerNav:hover{
-    border:3px solid orange;
+    border:3px solid #A5B1BD;
     cursor: default;
 }
 
 .headerNav.isSelected{
-    border:3px solid orange;
+    border:3px solid #A5B1BD;
     cursor: default;
 }
 
@@ -139,14 +139,14 @@ body{
     width:1000px;
     height:510px;
     background-color: black;
-    border: 10px solid orange;
+    border:10px solid #A5B1BD;
 }
 
 #ccbug{
     position:absolute;
     top: 655px;
     left: 940px;
-    width: 10px;
+    width: 5px;
     height: 60px;
     background-repeat: no-repeat;
 }
@@ -173,23 +173,24 @@ body{
 
 #contentSidebar{
     position: absolute;
-    top: 350px;
-    left: 770px;;
-    width:540px;
-    height:80px;
+    top: 344px;
+    left: 750px;
+    width: 518px;
+    height: 78px;
     text-align: justify;
-    writing-mode:tb-rl;
-    -webkit-transform:rotate(90deg);
-    -moz-transform:rotate(90deg);
+    writing-mode: tb-rl;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
-    white-space:nowrap;
-    display:block;
-    bottom:0;
-    font-family:'Exo';
-    font-size:34px;
-    color:black;
-/*    text-transform: uppercase;
-*/}
+    white-space: nowrap;
+    display: block;
+    bottom: 0;
+    font-family: 'Exo';
+    font-size: 17px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+}
 
 
 #contentLetter{
@@ -202,9 +203,9 @@ body{
 }
 
 #text{
-    color: grey;
+    color: #DBE0E5;
     font-family:'Share Tech Mono';
-    font-size: 14px;
+    font-size: 16px;
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 50px;
@@ -282,9 +283,9 @@ body{
 
 #posterjpgcontainer {
     position: absolute;
-    left: 500px;
+    left: 525px;
     top: 0px;
-    width: 500px;
+    width: 450px;
     height: 500px;
     float: right;
 
@@ -304,7 +305,7 @@ body{
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 500px;
+    width: 550px;
     height: 500px;
     margin: 20px;
     overflow-y: scroll;
@@ -326,7 +327,7 @@ body{
 
 }
 .thumbs:hover {
-    border: 1px solid orange;
+    border: 1px solid #A5B1BD;
 }
 
 #downloadPDF{
@@ -335,16 +336,24 @@ body{
     width: auto;
     height: auto;
     top: 470px;
-    left: 710px;
+    left: 730px;
     padding:2px;
     font-family: 'Share Tech Mono';
     color: black;
+    cursor: pointer;
 }
 
 #downloadPDF:hover{
-    border: 3px solid orange;
+    border: 3px solid #A5B1BD;
 }
 
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
 /* ==========================================================================
    Media Queries
    ========================================================================== */
