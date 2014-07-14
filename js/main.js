@@ -8,9 +8,9 @@ $(function(){
     })
     switchBackground();
     // $(".headerNav").click(menuclicked);
-     $(document).on("click", ".headerNav", menuclicked);
+     $(document).on("click touchStart", ".headerNav", menuclicked);
     // $("#dearClimate").click(homeclicked);
-    $(document).on("click", "#dearClimate", homeclicked);
+    $(document).on("click touchStart", "#dearClimate", homeclicked);
     if (window.location.hash !== ""){
         goToPage(window.location.hash.substr(2))   
     } else {
@@ -22,33 +22,50 @@ $(function(){
 
 /* ----------------- BACKGROUND RANDOMIZATION -----------------*/
 //to add a new background, add the filename to the array "allBackgrounds"
-var allBackgrounds = ["bg_rain1.jpg", "bg_rain2.jpg"];
+var allBackgrounds = ["bg_rain1.jpg", "garbage-04.jpg",  "bg_3.jpg", "clouds-07.jpg","bg_rain2.jpg","glaciers-01.jpg"];
+
+
+var randBackgroundIndex = Math.floor(Math.random() * allBackgrounds.length);
 
 function switchBackground(){
-	var randBackgroundIndex = Math.floor(Math.random() * allBackgrounds.length);
-	var backgroundName = "./img/backgrounds/"+allBackgrounds[randBackgroundIndex];
-	$("#mainContainer").css({
-		"background" : "url("+backgroundName+")"
-	});
-	console.log(backgroundName);
+    randBackgroundIndex++;
+    randBackgroundIndex = randBackgroundIndex % allBackgrounds.length;
+    var backgroundName = "./img/backgrounds/"+allBackgrounds[randBackgroundIndex];
+    $("body").css({
+        "backgroundImage" : "url("+backgroundName+")"
+    });
 }
+
+// function switchBackground(){
+// 	var randBackgroundIndex = Math.floor(Math.random() * allBackgrounds.length);
+// 	var backgroundName = "./img/backgrounds/"+allBackgrounds[randBackgroundIndex];
+// 	$("body").css({
+// 		"backgroundImage" : "url("+backgroundName+")"
+// 	});
+// }
 
 
 /* ----------------- NAVIGATION -----------------*/
 function menuclicked(){
     var menuItem = $(this).attr("id");
-    goToPage(menuItem);
+    $("#contentContainer").fadeTo(1000,0,function(){
+        goToPage(menuItem);
+    });
+    switchBackground();
 }
 
 function homeclicked(){
-    goToPage("homepage");
+    $("#contentContainer").fadeTo(1000,0,function(){
+        goToPage("homepage");
+    });    
+    switchBackground();
 }
 
 function goToPage(menuItem){  
-    console.log("1")
     $.get(menuItem+".html", function(content){
-        console.log("2")
-        $("#contentContainer").html(content)
+        $("#contentContainer").html(content);
+        $("#contentContainer").fadeTo(1000,1);
+        
     });
     $(".isSelected").removeClass("isSelected");
     window.location.hash = "/"+menuItem;
@@ -116,80 +133,43 @@ function makeAllThePosters(){
         $("<img>").attr("src", "./img/thumbs/" + i + ".jpg").appendTo(parent);
     }
     browsePosters();
+    setPoster("0.jpg");
 }
 
 function browsePosters(){
     $(".thumbs").click(function(e){
         var thumb = $(this).find("img");
+        $(".selectedThumb").removeClass("selectedThumb");
+        $(this).addClass("selectedThumb");
         var src = $(thumb).attr("src");
         console.log(src);
         // src = "../thumb/this_image_name.jpg"
         src = src.substring(13);
-        //src = "this_image_name.jpg"
-        $("#posterjpg").attr("src", "./img/jpgs/"+src);
-        // $("#posterjpg").attr("width", "300px");
-        $("#downloadPDFbutton").attr("href", "./img/pdfs/"+src.replace("jpg", "pdf"));
-        console.log(src);
+        setPoster(src);
+
     });
 console.log("browsePosters")
 }
 
+function setPoster(name){
+    $("#posterjpg").attr("src", "./img/jpgs/"+name);
+    $(".downloadPDFbutton").attr("href", "./img/pdfs/"+name.replace("jpg", "pdf"));
+    console.log(name);   
+}
 
 
 
+/* ----------------- WRITE ON EFFECT -----------------*/
 
+function writeOn(){
+     // $(".dearClimateLetter").typed({
+     //    strings: ["\n\nDear Climate, \n\nWe really blew it. ^1000 We're sorry. ^1000 We had other ideas and forgot \nabout finitude."],
+     //    typeSpeed: 100
+     //  });
 
-/* ----------------- OLD CAROUSEL METHOD -----------------*/
- // function browsePosters(){
-    //  wrap all thumbs in a <div> for the 3x3 grid
-    // $div = null;
-    // $('#thumbs').children().each(function(i) {
-    //     if ( i % 9 == 0) {
-    //         $div = $( '<div />' );
-    //         $div.appendTo( '#thumbs' );
-    //     }
-    //     $(this).appendTo( $div );
-    //     $(this).addClass( 'itm'+i );
-    //     $(this).click(function() {
-    //         $('#images').trigger( 'slideTo', [i, 0, true] );
-    //     });
-    // });
-    // $('#thumbs img.itm0').addClass( 'selected' );
- 
-    // //  the big-image carousel
-    // $('#images').carouFredSel({
-    //     direction: 'up',
-    //     circular: false,
-    //     infinite: false,
-    //     width: 350,
-    //     height: 350,
-    //     items: 1,
-    //     auto: false,
-    //     prev: '#prev .images',
-    //     next: '#next .images',
-    //     scroll: {
-    //         fx: 'directscroll',
-    //         onBefore: function() {
-    //             var pos = $(this).triggerHandler( 'currentPosition' );
-    //             $('#thumbs img').removeClass( 'selected' );
-    //             $('#thumbs img.itm'+pos).addClass( 'selected' );
-                
-    //             var page = Math.floor( pos / 9 );
-    //             $('#thumbs').trigger( 'slideToPage', page );
-    //         }
-    //     }
-    // });
- 
-    //  the thumbnail-carousel
-    // $('#thumbs').carouFredSel({
-    //     direction: 'up',
-    //     circular: false,
-    //     infinite: false,
-    //     width: 350,
-    //     height: 350,
-    //     items: 1,
-    //     align: false,
-    //     auto: false,
-    //     prev: '#prev .thumbs',
-    //     next: '#next .thumbs'
-    // });
+    $("#dearClimateLetter").typed({
+        strings: [$("#letterText").text()],
+        typeSpeed: 100
+    });
+}
+

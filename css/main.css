@@ -65,8 +65,8 @@ textarea {
     font-family: 'Exo', sans-serif;*/
 
 body{
-    background: url("../img/backgrounds/bg_rain2.jpg");
-}
+/*    background: url("../img/backgrounds/bg_rain2.jpg");
+*/}
 
 #mainContainer{
     position:relative;
@@ -105,26 +105,30 @@ body{
 
 #navContainer{
     position: absolute;
-    left:690px;
-    width:350px;
-    margin-top: 25px;
+    left: 700px;
+    width: 320px;
+    margin-top: 20px;
 }
 
 .headerNav{
-    width:auto;
+    width: auto;
     background-color: white;
     text-transform: uppercase;
-    color:black;
+    color: black;
     font-weight: 900;
     font-family: 'Exo', sans-serif;
-    margin:10px;
-    border:3px solid white;
-    line-height: 30px;
+    margin: 10px;
+    border: 3px solid white;
+    line-height: 40px;
+    font-size: 20px;
+
+
 }
 
 .headerNav:hover{
     border:3px solid #A5B1BD;
-    cursor: default;
+    cursor: pointer;
+
 }
 
 .headerNav.isSelected{
@@ -141,6 +145,16 @@ body{
     background-color: black;
     border:10px solid #A5B1BD;
 }
+
+#contentContainerBorder{
+    position: absolute;
+    top:120px;
+    left:10px;
+    width:1000px;
+    height:510px;
+    border:10px solid #A5B1BD;
+}
+
 
 #ccbug{
     position:absolute;
@@ -161,19 +175,9 @@ body{
     cursor: pointer;
 }
 
-#soundcloudHome{
-    position: absolute;
-    top: 400px;
-    left: 920px;
-    width: 62px;
-    height: 87px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
 #contentSidebar{
     position: absolute;
-    top: 344px;
+    top: 343px;
     left: 750px;
     width: 518px;
     height: 78px;
@@ -185,22 +189,12 @@ body{
     white-space: nowrap;
     display: block;
     bottom: 0;
-    font-family: 'Exo';
+    font-family: 'Exo', sans-serif;
     font-size: 17px;
     color: black;
     text-transform: uppercase;
     letter-spacing: 7px;
-}
-
-
-#contentLetter{
-    margin-left: 60px;
-    margin-bottom:30px;
-    width:50%;
-    color: white;
-    font-family:'Share Tech Mono';
-    font-size: 14px;
-}
+    }
 
 #text{
     color: #DBE0E5;
@@ -210,6 +204,7 @@ body{
     margin-right: 100px;
     margin-bottom: 50px;
     margin-top: 50px;
+    white-space: pre-wrap; 
 }
 
 #scrollbar{
@@ -292,8 +287,10 @@ body{
 }
 
 #posterjpg {
-    border-right: 3px solid black;
-    border-bottom: 3px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    border-left: 5px solid white;
+    border-top: 5px solid white;
     width: 280px;
     left: 120px;
     top: 20px;
@@ -305,9 +302,10 @@ body{
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 550px;
+    width: 540px;
     height: 500px;
-    margin: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     overflow-y: scroll;
     overflow-x: auto;
 }
@@ -318,16 +316,21 @@ body{
     margin-top: 2px;
     margin-bottom:2px;
     float:left;
-    border-left: 1px solid white;
-    border-top: 1px solid white;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 4px solid white;
+    border-top: 4px solid white;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
     cursor: pointer;
 }
 
+.thumbs.selectedThumb {
+    border: 4px solid #A5B1BD;
 }
+
 .thumbs:hover {
-    border: 1px solid #A5B1BD;
+    border: 4px solid #A5B1BD;
+    cursor: pointer;
+
 }
 
 #downloadPDF{
@@ -336,15 +339,17 @@ body{
     width: auto;
     height: auto;
     top: 470px;
-    left: 730px;
+    left: 742px;
     padding:2px;
-    font-family: 'Share Tech Mono';
+    font-family: 'Share Tech Mono', sans-serif;
     color: black;
     cursor: pointer;
 }
 
 #downloadPDF:hover{
     border: 3px solid #A5B1BD;
+    cursor: pointer;
+
 }
 
 a:link {
@@ -352,8 +357,66 @@ a:link {
     color: black;
 }
 
+#text a {
+    color:white;
+    text-decoration: underline;
+
+}
+
 a:visited {
     color: black;
+
+}
+#scloudCover{
+    background-color: black;
+    width: 70px;
+    height: 47px;
+    position: absolute;
+    top: 462px;
+    left: 917px;
+    }
+
+#muteButton{
+    pointer-events: none;
+    width: auto;
+    position: absolute;
+    top: 402px;
+    left: 917px;
+
+}
+
+#homeAudio {
+    width: 60px;
+    position: absolute;
+    top: 407px;
+    left: 920px;
+}
+
+#podcastPlayer{
+    width: 340px;
+    top: 10%;
+    left: 340px;
+    position: absolute;
+
+}
+
+
+/* ----------------- WRITE ON EFFECT -----------------*/
+
+#dearClimateLetter{
+    white-space: pre; 
+    font-family:'Share Tech Mono'; 
+    color:white; 
+    font-size: 14px;
+    margin-left:30px; 
+    margin-right:30px;
+    white-space: pre;
+}
+
+#letterText{
+    display: none;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -431,69 +494,4 @@ a:visited {
     *zoom: 1;
 }
 
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
 }
